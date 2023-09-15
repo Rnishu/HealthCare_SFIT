@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 const { collection } = require('./userModel');
 const Schema = mongoose.Schema;
-const userData = new Schema(
+const userMedInfo = new Schema(
     {
-        age : {type : "integer", required : true},
+        username : {type : "string", required : true},
+        age : {type : "number", required : true},
         symptoms : {type : "string", required : true},
-        numberOfDays : {type : "integer", required : true},
+        numberOfDays : {type : "number", required : true},
         gender : {type : "string", required : true, },
         location : {type : "string", required : true},
         medicalHistory : {
@@ -16,6 +17,8 @@ const userData = new Schema(
             disease : { type : "string"},
         }
     },{
-        collection : 'userData'
+        collection : 'userDatas'
     }
 )
+const model = mongoose.model('UserMedInfo', userMedInfo);
+module.exports = model;
