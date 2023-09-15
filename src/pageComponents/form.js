@@ -1,7 +1,7 @@
 import React from "react";
 function Form(){
-    submit(){
-        
+    function submit(){
+        console.log('Data Submitted')
     }
     return(
         <div>
@@ -16,6 +16,7 @@ function Form(){
             <input type='text' placeholder="Symptoms"></input><br></br>
             <input type="date"></input><br></br>
             <input type='text' placeholder="Location"></input><br></br>
+            <input type='text' placeholder="Vital Signs"></input><br></br>
             <p>Medical History</p>
             <input type='text' placeholder="Previous Disease"></input><br></br>
             <input 
@@ -23,7 +24,7 @@ function Form(){
             ></input><br></br>
             <p>Ancestral History</p>
             <input typpe='text' placeholder="Disease"></input>
-            <button onClick={submit}></button>
+            <button onClick={submit}>Submit</button>
         </form>
         </div>
     );

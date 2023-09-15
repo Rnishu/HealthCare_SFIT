@@ -12,8 +12,11 @@ function AppRouter(){
         <div>
             <Router>
                 <Routes>
-                    <Route exact path='/' element={<Home/>}/>
+                    <Route exact path='/home' element={<Home/>}/>
                     <Route exact path='/form' element={<Form/>}/>
+                    <Route exact path='/staff_portal' element={<StaffPortal/>}/> 
+                    <Route exact path='/login' element={<Login/>}/>
+                    <Route exact path='/register' element={<Register/>}/>
                 </Routes>
             </Router>
         </div>
