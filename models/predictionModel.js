@@ -6,6 +6,9 @@ const predictionData = new Schema(
         disease : {type : "array"},
         symptoms : {type : "array"},
         urgency : { type : "number"}
+    },
+    {
+        collection : "predictionData"
     }
 )
 const model = mongoose.model('Prediction', predictionData);
