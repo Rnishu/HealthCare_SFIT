@@ -1,0 +1,28 @@
+{
+  "name": "healthcare_sfit",
+  "version": "1.0.0",
+  "description": "AI-powered solution that can accurately prioritize and categorize incoming patient data in a hospital's emergency department. The system should analyze patient symptoms, medical history, vital signs, and available resources to efficiently allocate medical staff and resources, ensuring that critical cases receive immediate attention.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rnishu/HealthCare_SFIT.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rnishu/HealthCare_SFIT/issues"
+  },
+  "homepage": "https://github.com/Rnishu/HealthCare_SFIT#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.5.1"
+  }
+}
