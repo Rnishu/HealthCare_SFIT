@@ -15,7 +15,8 @@ const userMedInfo = new Schema(
         },
         ancestralDisease : {
             disease : { type : "string"},
-        }
+        },
+        medicalStaff : {type : "boolean"}
     },{
         collection : 'userDatas'
     }

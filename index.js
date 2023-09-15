@@ -9,7 +9,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const port = 3000;
+const port = 3001;
+
 const { register, login, LimSkip, postUserMedInfo, postPredictionData, getPredictionData } = require("./auth/controller");
 
 app.listen(port, () => console.log(`app is listening on ${port}`));
