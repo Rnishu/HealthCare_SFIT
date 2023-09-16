@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 const userSchema = require("../models/userModel.js");
 const userMedInfoSchema = require("../models/userMedInfoModel.js");
 const predictionSchema = require("../models/predictionModel.js");
+const symptoms = require("../models/symptoms.js");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const jwtkey = "dontreact@15^-202";
@@ -72,7 +73,7 @@ const postUserMedInfo = async (req, res) => {
       gender: req.body.gender,
       location: req.body.location,
       medicalHistory: req.body.medicalHistory,
-      ancestralDisease: req.body.medicalHistory,
+      ancestralDisease: req.body.ancestralDisease,
     });
     res.json({ status: "ok" });
   } catch (err) {
@@ -120,11 +121,21 @@ const LimSkip = async (limit, skip) => {
   }
 };
 
+const getSymptomsList = async (req, res) =>{
+  try{
+    const symptomsList = await symptoms.find()
+    return symptomsList;
+  }catch {
+    return null;
+  }
+}
+
 module.exports = {
   register,
   login,
   LimSkip,
   postUserMedInfo,
   postPredictionData,
-  getPredictionData
+  getPredictionData,
+  getSymptomsList
 };

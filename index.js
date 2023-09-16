@@ -1,9 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
-
+/*
 const userSchema = require("./models/userModel.js");
-const mongoose = require("mongoose");
+const mongoose = require("mongoose");*/
 
 const app = express();
 app.use(cors());
@@ -11,7 +11,7 @@ app.use(express.json());
 
 const port = 3001;
 
-const { register, login, LimSkip, postUserMedInfo, postPredictionData, getPredictionData } = require("./auth/controller");
+const { register, login, LimSkip, postUserMedInfo, postPredictionData, getPredictionData,getSymptomsList } = require("./auth/controller");
 
 app.listen(port, () => console.log(`app is listening on ${port}`));
 
@@ -36,3 +36,5 @@ app.post('/api/userMedInfo',postUserMedInfo);
 app.post('/api/predictionData',postPredictionData);
 
 app.get('/api/predictionData',getPredictionData);
+
+app.get('/api/symptoms',getSymptomsList);
