@@ -2,11 +2,12 @@ import React from "react";
 import{
     BrowserRouter as Router, Route, Routes
 } from 'react-router-dom';
-import Home from './pageComponents/home';
-import Form from './pageComponents/form';
-import StaffPortal from './pageComponents/staffPortal';
-import Login from './pageComponents/login';
-import Register from './pageComponents/register';
+import Home from './Components/home';
+import Form from './Components/form';
+import StaffPortal from './Components/staffPortal';
+import Login from './Components/login';
+import Register from './Components/register';
+import Result from './Components/results';
 function AppRouter(){
     return(
         <div>
