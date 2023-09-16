@@ -4,10 +4,11 @@ const userMedInfoSchema = require("../models/userMedInfoModel.js");
 const predictionSchema = require("../models/predictionModel.js");
 const symptoms = require("../models/symptoms.js");
 const mongoose = require("mongoose");
+const nodemailer = require('nodemailer');
 const jwt = require("jsonwebtoken");
 const jwtkey = "dontreact@15^-202";
 const url =
-  "mongodb+srv://dontreact:harivasudevan@cluster0.oa6nyed.mongodb.net/?retryWrites=true&w=majority";
+"mongodb+srv://dontreact:harivasudevan@cluster0.oa6nyed.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.connect(url, {
   useNewUrlParser: true,
@@ -21,8 +22,36 @@ mongoose.connection.on("open", function () {
   console.log("Connected to MongoDB database.");
 });
 
+
+async function sendEmail(email) {
+  try {
+    const transporter = nodemailer.createTransport({
+      service: 'Gmail',
+      auth: {
+        user: 'nishanthravichandran12@gmail.com',
+        pass: 'nishanth'
+      }
+    });
+
+    const mailOptions = {
+      from: 'nishanthravichandran12@gmail.com',
+      to: email,
+      subject: 'You have increased risk of {disease}, please visit your nearest hospital imediatelly',
+      text: 'Lorem100'
+    };
+
+    const info = await transporter.sendMail(mailOptions);
+    console.log('Email sent:', info.messageId);
+  } catch (error) {
+    console.error('Error occurred:', error);
+  }
+}
+
+
+
+
 const register = async (req, res) => {
-  if (!req) {
+  if (!req.body) {
     return res.status(400).json({ error: "Bad Request" });
   }
   try {
@@ -69,12 +98,17 @@ const postUserMedInfo = async (req, res) => {
       username: req.body.username,
       age: req.body.age,
       symptoms: req.body.symptoms,
-      numberOfDays: req.body.numberOfDays,
+      numberOfDays: req.body.numberOfDays,  // change to vital signs
       gender: req.body.gender,
       location: req.body.location,
       medicalHistory: req.body.medicalHistory,
       ancestralDisease: req.body.ancestralDisease,
     });
+    prevHistory=await predictionSchema.find().limit(12);
+    email=await userSchema.findOne(username=req.body.username).email
+    if(prevHistory.length>10){
+      sendEmail(email);
+    }
     res.json({ status: "ok" });
   } catch (err) {
     console.log(err);
@@ -130,6 +164,31 @@ const getSymptomsList = async (req, res) =>{
   }
 }
 
+const predict= async(req,res)=>{
+  const url = 'http://localhost:105/predict';
+  const options = {
+  method: 'POST',
+  headers: {'content-type': 'application/json'},
+  body: JSON.stringify(req.body)
+};
+
+try {
+  const response = await fetch(url, options);
+  const data = await response.json();
+  await predictionSchema.create({
+    username:"",
+    disease: data.disease,
+    symptoms:req.body.symptoms,
+    urgency:data.urgency
+  }
+  );
+
+  return res.status(200).json(data);
+} catch (error) {
+  return res.status(500).json({error:"Error"});
+}
+}
+
 module.exports = {
   register,
   login,
@@ -137,5 +196,6 @@ module.exports = {
   postUserMedInfo,
   postPredictionData,
   getPredictionData,
-  getSymptomsList
+  getSymptomsList,
+  predict
 };
