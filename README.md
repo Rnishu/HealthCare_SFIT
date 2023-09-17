@@ -6,7 +6,7 @@
  
 
 
-## Team Mambers
+## Team Members
 
 - [Nishanth Ravichandran](https://www.github.com/octokatherine)
 - [Priyansh Patel]()
