@@ -16,6 +16,7 @@ const {
   login,
   LimSkip,
   postUserMedInfo,
+  getUserMedInfo,
   postPredictionData,
   getPredictionData,
   getSymptomsList,
@@ -23,23 +24,13 @@ const {
 } = require("./auth/controller");
 
 app.listen(port, () => console.log(`app is listening on ${port}`));
-
+//authentification
 app.post("/api/register", register);
 
 app.post("/api/login", login);
-
-app.get("/api/userMedInfo", async (req, res) => {
-  try {
-    userData = await LimSkip(req.query.limit, req.query.skip);
-    if (userData == null) {
-      return res.status(500).json({ error: "Bad Request" });
-    }
-    return res.status(200).json(userData);
-  } catch {
-    res.status(400).json({ error: "Error" });
-  }
-});
-
+//accessing user medical information
+app.get("/api/userMedInfo", getUserMedInfo);
+//posting user medical information
 app.post("/api/userMedInfo", postUserMedInfo);
 
 app.post("/api/predictionData", postPredictionData);

@@ -46,10 +46,7 @@ async function sendEmail(email) {
     console.error('Error occurred:', error);
   }
 }
-
-
-
-
+//user login and register
 const register = async (req, res) => {
   if (!req.body) {
     return res.status(400).json({ error: "Bad Request" });
@@ -98,8 +95,9 @@ const postUserMedInfo = async (req, res) => {
       username: req.body.username,
       age: req.body.age,
       symptoms: req.body.symptoms,
-      numberOfDays: req.body.numberOfDays,  // change to vital signs
+      numberOfDays: req.body.numberOfDays,  
       gender: req.body.gender,
+      vitalSigns: req.body.vitalSigns,
       location: req.body.location,
       medicalHistory: req.body.medicalHistory,
       ancestralDisease: req.body.ancestralDisease,
@@ -115,7 +113,17 @@ const postUserMedInfo = async (req, res) => {
     res.json({ status: "error", error: "Server Error" });
   }
 };
-
+const getUserMedInfo = async (req, res) =>{
+  try {
+    userData = await LimSkip(req.query.limit, req.query.skip);
+    if (userData == null) {
+      return res.status(500).json({ error: "Bad Request" });
+    }
+    return res.status(200).json(userData);
+  } catch {
+    res.status(400).json({ error: "Error" });
+  }
+}
 const postPredictionData = async (req, res) => {
   if (!req) {
     return res.status(400).json({ error: "Bad Request" });
@@ -158,9 +166,9 @@ const LimSkip = async (limit, skip) => {
 const getSymptomsList = async (req, res) =>{
   try{
     const symptomsList = await symptoms.find()
-    return symptomsList;
+    return res.status(200).json({symptomsList});
   }catch {
-    return null;
+    return res.status(500).json({error:"Error"});
   }
 }
 
@@ -194,6 +202,7 @@ module.exports = {
   login,
   LimSkip,
   postUserMedInfo,
+  getUserMedInfo,
   postPredictionData,
   getPredictionData,
   getSymptomsList,
