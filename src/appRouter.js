@@ -18,6 +18,7 @@ function AppRouter(){
                     <Route exact path='/staff_portal' element={<StaffPortal/>}/> 
                     <Route exact path='/login' element={<Login/>}/>
                     <Route exact path='/register' element={<Register/>}/>
+                    <Route exact path='/result' element={<Result/>}/>
                 </Routes>
             </Router>
         </div>

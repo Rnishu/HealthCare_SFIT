@@ -1,0 +1,11 @@
+:root{
+    --green : rgb(37, 87, 44);
+    --white : #efefef;
+    --light-green : rgb(171, 214, 101);
+}
+.text{
+    color : var(--white);
+    font-size: 100px;
+    margin : 20px;
+    padding : 40px;
+}

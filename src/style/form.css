@@ -1,0 +1,87 @@
+:root{
+    --green : rgb(59, 88, 63);
+    --white : #efefef;
+    --light-green : rgb(102, 160, 115);
+}
+.formContainer::-webkit-scrollbar {
+    display: none;
+}
+*{
+    margin : 0px;
+}
+body{
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--green);
+}
+.formHeading{ 
+    color: var(--white);
+    font-size: 50px;
+    width: max-content;
+    display: block;
+    text-align: left;
+    margin-left : 350px;
+    text-transform: uppercase;
+}
+.input{
+    margin: 40px 40px;
+    padding : 20px 2%;
+    text-align: left;
+    background-color: var(--white);
+    display: inline-block;
+    font-size: 160%;
+    width: fit-content;
+    border-radius: 17px;
+    border: none;
+    color : var(--green);
+}
+.submit{
+    margin-left : 43px;
+    margin-top : 0px;
+}
+.gender{
+    border: none;
+    font-size: medium;
+    background-color: var(--white);
+    width: 140px;
+    margin : 20px 20px;
+    text-align: center;
+    font-weight: bold;
+}
+.date{
+    height: max-content;
+}
+.formContainer{
+    display: flex;
+    justify-content: flex-start;
+    background-color: var(--light-green);
+    height: 80vh;
+    width : 45vw;
+    margin-left : 500px;
+    margin-top : 50px;
+    overflow: scroll;
+    border-radius: 25px;
+
+}
+form{
+    display: flex;
+    flex-direction: column;
+    flex-flow: column;
+}
+.label{
+    font-size: larger;
+    margin-top: 10px;
+    margin-bottom : 10px;
+    padding : 10px auto;
+    margin : 10px 0px;
+    width : 50vw;
+    text-align: center;
+    background-color: #efefef;
+}
+.genderContainer{
+    display: flex;
+    background-color: var(--green);
+    border: var(--green) solid 4px;
+    border-radius: 20px;
+    width : 440px;
+    margin : 10px 50px;
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 const UserData = (user) =>{
     const presentDate = new date();
@@ -16,6 +16,10 @@ const UserData = (user) =>{
                 }       
             </ul>
             <p>{numberOfDays}</p>
+            <p>{gender}</p>
+            <p>{location}</p>
+            <h2>Medical History</h2>
+            
         </div>
     );
 }

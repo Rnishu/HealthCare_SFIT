@@ -1,0 +1,15 @@
+.textfield{
+    margin : 20px;
+    font-size: 20px;
+    width : 160px;
+    height: 30px;
+}
+.submitButton{
+    margin : 20px;
+    font-size : 20px;
+    height: 40px;
+}
+.authLink{
+    color : white;
+    text-decoration: none;
+}

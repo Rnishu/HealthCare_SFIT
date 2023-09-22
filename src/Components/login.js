@@ -3,26 +3,22 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 function Login(){
     const [username, setUsername] = useState(''); 
-    const [password, setPassword] = useState(''); 
+    const [password, setPassword] = useState('');   
+    const host = 'http://localhost:3001/';
     const navigate = useNavigate();
     async function loginUser(event){
         event.preventDefault();
-        try{
-          const response = await fetch('/api/login', {
-            method : 'POST',
-            headers: {
-              'Content-Type' : 'application/json',
-            },
-            body: JSON.stringify({
-              username,
-              password,
-            }),
-          })
-        }catch(error){
-          
-        }
-          
-        const data = await response.json();
+        const response = await fetch(host+'api/login', {
+          method : 'POST',
+          headers: {
+            'Content-Type' : 'application/json',
+          },
+          body: JSON.stringify({
+            username,
+            password,
+          }),
+        })
+        const data = response.json();
         if(data.user){
           localStorage.setItem('token', data.user);
           alert('Login Successful');
@@ -38,15 +34,17 @@ function Login(){
                 type="text" 
                 placeholder="Username"
                 value={username}
+                className="textfield"
                 onChange={(e)=>setUsername(e.target.value)}
             ></input><br></br>
             <input 
                 type="password" 
                 placeholder="Password"
-                value={password}   
+                value={password}  
+                className="textfield" 
                 onChange={(e)=>setPassword(e.target.value)} 
             ></input><br></br>
-            <button onClick={loginUser}>Login</button><br></br>
+            <button onClick={loginUser} className='submitButton'>Login</button><br></br>
             <a href='/register'>Register?</a>
         </div>
     );

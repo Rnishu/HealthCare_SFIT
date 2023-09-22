@@ -6,13 +6,13 @@ function Register() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [medicalStaff, setMedicalStaff] = useState(false);
+  const host = 'http://localhost:3001/';
   const navigate = useNavigate();
   const toggleMedicalStaff = () => {
     setMedicalStaff(!medicalStaff);
   };
   async function register() {
-    try {
-      const response = await fetch("/api/register", {
+      const response = await fetch(host+"api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -26,11 +26,11 @@ function Register() {
       });
       const data = await response.json();
       if (data.status === "ok") {
+        alert("Registered Successfully");
         navigate("/login");
+      }else{
+        alert("Error while registering user :" + data.status.error);
       }
-    } catch (err) {
-      console.log(err);
-    }
   }
   return (
     <div>

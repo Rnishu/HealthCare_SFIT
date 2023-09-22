@@ -1,7 +1,46 @@
+:root{
+    --green : rgb(37, 87, 44);
+    --white : #efefef;
+    --light-green : rgb(171, 214, 101);
+}
 *{
     margin : 0px;
 }
 nav{
-    background-color: black;
+    background-color: var(--light-green);
     height: 50px;
+}
+.navLink{
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    padding : 15px;
+}
+.navLink a{
+    color : white;
+    text-decoration: none;
+    padding : 40px 20px;
+}
+.homeHeading{ 
+    color : var(--white);
+    margin : 30px 650px;
+    font-size: 100px;
+}
+h2{ 
+    color : var(--white);
+    margin : 50px 600px;
+    text-align: center;
+}
+.homePara{
+    color :var(--white);
+    text-align: center;
+    margin : 50px 600px;
+    font-size: 20px;
+}
+.link{
+    color :var(--white);
+    border : white solid 1px;
+    margin : 10px 900px;
+    padding : 20px;
+    text-decoration: none;
 }
